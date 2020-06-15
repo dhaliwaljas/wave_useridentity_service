@@ -1,21 +1,21 @@
-package com.wave.uis.config;
+package com.wave.uis.configuration;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.wave.uis.model.entity.UserIdentity;
+import com.wave.uis.model.entity.UserEntity;
 import com.wave.uis.repository.UserIdentityRepository;
 
 @EnableMongoRepositories(basePackageClasses = UserIdentityRepository.class)
 @Configuration
-public class MongoDBConfig {
+public class MongoDBConfiguration {
 
 	@Bean
 	CommandLineRunner commandLineRunner(UserIdentityRepository userProfileRepo) {
 		return strings -> {
-			userProfileRepo.save(new UserIdentity("fef", "sdfrgw", "wegwbbÏ"));
+			userProfileRepo.save(new UserEntity("test_id", "test_email", "test_password"));
 
 		};
 	}

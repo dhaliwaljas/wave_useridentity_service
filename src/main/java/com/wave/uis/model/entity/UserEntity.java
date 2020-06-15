@@ -1,17 +1,24 @@
 package com.wave.uis.model.entity;
 
-public class UserIdentity {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
+public class UserEntity {
+
+	@Id
 	private String id;
+	
+	@Indexed(unique = true)
 	private String email;
+
 	private String password;
 
-	public UserIdentity() {
+	public UserEntity() {
 		super();
 
 	}
 
-	public UserIdentity(String id, String email, String password) {
+	public UserEntity(String id, String email, String password) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -41,5 +48,12 @@ public class UserIdentity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", email=" + email + ", password=" + password + "]";
+	}
+	
+	
 
 }
